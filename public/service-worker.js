@@ -4,7 +4,7 @@ const DATA_CACHE_NAME = "financial-data-cache-v1";
 const FILES_TO_CACHE = [
   "/",
   "./index.html",
-  "./css/style.css",
+  "./css/styles.css",
   "./js/index.js",
   "./js/idb.js",
   "./icons/icon-72x72.png",
@@ -26,10 +26,8 @@ self.addEventListener("install", function (evt) {
       return cache.addAll(FILES_TO_CACHE);
     })
   );
-
   self.skipWaiting();
 });
-
 // Activate the service worker and remove old data from the cache
 self.addEventListener("activate", function (evt) {
   evt.waitUntil(
@@ -44,10 +42,8 @@ self.addEventListener("activate", function (evt) {
       );
     })
   );
-
   self.clients.claim();
 });
-
 // Intercept fetch requests
 self.addEventListener("fetch", function (evt) {
   if (evt.request.url.includes("/api/")) {
@@ -61,7 +57,6 @@ self.addEventListener("fetch", function (evt) {
               if (response.status === 200) {
                 cache.put(evt.request.url, response.clone());
               }
-
               return response;
             })
             .catch((err) => {
@@ -71,10 +66,8 @@ self.addEventListener("fetch", function (evt) {
         })
         .catch((err) => console.log(err))
     );
-
     return;
   }
-
   evt.respondWith(
     fetch(evt.request).catch(function () {
       return caches.match(evt.request).then(function (response) {
