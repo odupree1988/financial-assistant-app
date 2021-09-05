@@ -20,8 +20,8 @@ An application that allows you manage your budget by entering in spending trends
 
 Once the repository has been cloned, run npm start to start the app. Once the app has been started, open localhost:3001. There you can add or subtract from your funds and provide a description of your transaction.
 
-![](src/img/social-network01.png)
-![](src/img/social-network02.png)
+![](public/img/financial01.png)
+![](public/img/financial02.png)
 
 ---
 
